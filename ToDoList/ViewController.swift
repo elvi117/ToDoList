@@ -17,10 +17,6 @@ class ViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-       
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -45,10 +41,6 @@ class ViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("toDoNameCell", forIndexPath: indexPath) as! toDoNameCell
         cell.titleLabel.text = arrayOfTasks[indexPath.row].name
         cell.dateLabel.text = arrayOfTasks[indexPath.row].date
-
-        
- 
-        
         return cell
     }
     
@@ -61,11 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     }
     
      func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-//        let movedObject = self.data[sourceIndexPath.row]
-//        data.removeAtIndex(sourceIndexPath.row)
-//        data.insert(movedObject, atIndex: destinationIndexPath.row)
-//        NSLog("%@", "\(sourceIndexPath.row) => \(destinationIndexPath.row) \(data)")
-        // To check for correctness enable:  self.tableView.reloadData()
+
     }
 
 
