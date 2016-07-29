@@ -42,6 +42,19 @@ class ViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("toDoNameCell", forIndexPath: indexPath) as! toDoNameCell
         cell.titleLabel.text = arrayOfTasks[indexPath.row].name
         cell.dateLabel.text = arrayOfTasks[indexPath.row].date
+        switch arrayOfTasks[indexPath.row].priority {
+        case 1:
+            cell.priorityImg.text = "H"
+            cell.priorityImg.backgroundColor = UIColor.redColor()
+        case 2:
+            cell.priorityImg.text = "M"
+            cell.priorityImg.backgroundColor = UIColor.orangeColor()
+        case 3:
+            cell.priorityImg.text = "L"
+            cell.priorityImg.backgroundColor = UIColor.greenColor()
+        default:
+            break
+        }
         return cell
     }
     
