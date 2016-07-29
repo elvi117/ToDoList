@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="272" y="317"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Task View Controller-->
         <scene sceneID="qeu-Tk-tu6">
             <objects>
-                <viewController id="sWQ-BJ-4Un" sceneMemberID="viewController">
+                <viewController id="sWQ-BJ-4Un" customClass="CreateTaskViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZNV-jp-ND1"/>
                         <viewControllerLayoutGuide type="bottom" id="7z9-gw-8k1"/>
@@ -162,7 +162,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNn-IQ-eCr">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNn-IQ-eCr">
                                 <rect key="frame" x="171" y="173" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.051290923323739634" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="H">
@@ -173,6 +173,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="priorityButtonClicked:" destination="sWQ-BJ-4Un" eventType="touchUpInside" id="kAo-2z-L4t"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2r0-x6-ulo">
                                 <rect key="frame" x="159" y="223" width="282" height="110"/>
@@ -184,7 +187,7 @@
                                     <!--2016-07-29 04:37:49 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ja3-JD-Mrz">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ja3-JD-Mrz">
                                 <rect key="frame" x="277" y="173" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.75" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="M">
@@ -195,8 +198,11 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="priorityButtonClicked:" destination="sWQ-BJ-4Un" eventType="touchUpInside" id="ecE-jt-Ab9"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKN-8l-LLl">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKN-8l-LLl">
                                 <rect key="frame" x="383" y="173" width="46" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.089913264083117728" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="L">
@@ -207,6 +213,9 @@
                                         <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="priorityButtonClicked:" destination="sWQ-BJ-4Un" eventType="touchUpInside" id="3k5-xH-KlC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -231,6 +240,13 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="dataPicker" destination="2r0-x6-ulo" id="B3f-Nc-ebk"/>
+                        <outlet property="hButton" destination="mNn-IQ-eCr" id="mZO-no-v7j"/>
+                        <outlet property="lButton" destination="TKN-8l-LLl" id="xht-Lw-TCt"/>
+                        <outlet property="mButton" destination="Ja3-JD-Mrz" id="2SC-q4-ijB"/>
+                        <outlet property="nameTextField" destination="PBP-YX-9Am" id="JRU-Pc-vWL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shh-kG-dBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
