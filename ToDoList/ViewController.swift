@@ -58,20 +58,45 @@ class ViewController: UIViewController, UITableViewDelegate {
         return cell
     }
     
-     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return .None
+    
+    
+    
+    
+     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
     
-     func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
+            let realm = try! Realm()
+            let tmp:Task = Task()
+            let cell:toDoNameCell = tableView.cellForRowAtIndexPath(indexPath) as! toDoNameCell
+            tmp.date = cell.dateLabel.text!
+            tmp.name = cell.titleLabel.text!
+            switch cell.priorityImg {
+            case "H":
+                tmp.priority = 1
+            case "M":
+                tmp.priority = 2
+            case "L":
+                tmp.priority = 3
+            default:
+                break
+            }
+            
+            let objectToDelete = realm.objects(Task.self).filter("name == %@ && date == %@", tmp.name, tmp.date).first
+            
+            try! realm.write {
+                realm.delete(objectToDelete!)
+            }
+       
+            arrayOfTasks = Array(realm.objects(Task.self))
+            myTableView.reloadData()
+        }
+        
     }
-    
-     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-
-    }
-
-
-    
     
 }
 
