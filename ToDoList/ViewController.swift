@@ -18,10 +18,13 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.navigationController?.navigationBarHidden = false
+        
     }
-
+    override func viewWillAppear(animated: Bool) {
+         self.navigationController?.navigationBarHidden = true
+    }
     override func viewDidAppear(animated: Bool) {
+       
         let realm = try! Realm()
         arrayOfTasks = Array(realm.objects(Task.self))
        myTableView.reloadData()

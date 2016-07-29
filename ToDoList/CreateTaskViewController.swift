@@ -51,6 +51,7 @@ class CreateTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          self.navigationController?.navigationBarHidden = false
 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(save))
         
     self.mButton.selected = true
