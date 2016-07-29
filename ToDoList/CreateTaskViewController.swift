@@ -64,21 +64,32 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain
     
     @IBAction func save(sender: AnyObject) {
         let task:Task = Task()
-        task.name = nameTextField.text!
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let strDate = dateFormatter.stringFromDate(dataPicker.date)
-        task.date = strDate
-        
-        task.priority = priorityMatched
-        
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(task)
+        if nameTextField.text!.characters.count>0 {
+            task.name = nameTextField.text!
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+            let strDate = dateFormatter.stringFromDate(dataPicker.date)
+            task.date = strDate
+            
+            task.priority = priorityMatched
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(task)
+            }
+            self.navigationController?.popViewControllerAnimated(true)
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        else{
+            let alertController = UIAlertController(title: "Error", message:
+                "Set tesk's name", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+      
     }
 
     /*
