@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationController?.navigationBarHidden = false
     }
 
     override func viewDidAppear(animated: Bool) {
