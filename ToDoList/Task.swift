@@ -11,6 +11,8 @@ import RealmSwift
 
 class Task: Object {
     
+    
+    
    dynamic var priority:Int = 0
   dynamic  var name:String = ""
    dynamic var date:String = ""

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CreateTaskViewController: UIViewController {
 
@@ -19,7 +20,8 @@ class CreateTaskViewController: UIViewController {
     @IBOutlet weak var hButton: UIButton!
     @IBOutlet weak var mButton: UIButton!
     @IBOutlet weak var lButton: UIButton!
-
+    var priorityMatched = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(save))
@@ -30,6 +32,22 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain
         // Dispose of any resources that can be recreated.
     }
     @IBAction func save(sender: AnyObject) {
+        let task:Task = Task()
+        task.name = nameTextField.text!
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        let strDate = dateFormatter.stringFromDate(dataPicker.date)
+        task.date = strDate
+        
+        task.priority = priorityMatched
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(task)
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     /*
